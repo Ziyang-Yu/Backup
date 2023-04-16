@@ -911,185 +911,97 @@
       \range{pages}{11}
       \keyw{fey2021gnnautoscale}
     \endentry
-    \entry{sen2008collective}{article}{}
-      \name{author}{6}{}{%
-        {{hash=b462b0dcebeb73e78540b0cc258613b9}{%
-           family={Sen},
-           familyi={S\bibinitperiod},
-           given={Prithviraj},
-           giveni={P\bibinitperiod}}}%
-        {{hash=0a40abf756fcfe43cfcbbf85e2504a9b}{%
-           family={Namata},
-           familyi={N\bibinitperiod},
-           given={Galileo},
-           giveni={G\bibinitperiod}}}%
-        {{hash=1361216ac451c77a7896730385bf27dd}{%
-           family={Bilgic},
-           familyi={B\bibinitperiod},
-           given={Mustafa},
+    \entry{kipf2016semi}{article}{}
+      \name{author}{2}{}{%
+        {{hash=26d8bcbda6afaf96334bf47c8fb88a75}{%
+           family={Kipf},
+           familyi={K\bibinitperiod},
+           given={Thomas\bibnamedelima N},
+           giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=53d2880ad8047b61cdae2c6b2803e763}{%
+           family={Welling},
+           familyi={W\bibinitperiod},
+           given={Max},
            giveni={M\bibinitperiod}}}%
-        {{hash=88e86bf57e4d0841ba9010d52469237c}{%
-           family={Getoor},
-           familyi={G\bibinitperiod},
-           given={Lise},
-           giveni={L\bibinitperiod}}}%
-        {{hash=0d29c0b0b805e82df53db0a742440359}{%
-           family={Galligher},
-           familyi={G\bibinitperiod},
-           given={Brian},
-           giveni={B\bibinitperiod}}}%
-        {{hash=70d0c119ded502b95ee9a5df9d705934}{%
-           family={Eliassi-Rad},
-           familyi={E\bibinithyphendelim R\bibinitperiod},
-           given={Tina},
-           giveni={T\bibinitperiod}}}%
       }
       \list{language}{1}{%
         {english}%
       }
-      \strng{namehash}{4472bfcdd46f7d8c461d13a51f544594}
-      \strng{fullhash}{6f79e74d61970d5b9a9ef095dc53ac0e}
-      \strng{bibnamehash}{4ddaecbce1c1da3c7293ab1a8d662285}
-      \strng{authorbibnamehash}{4ddaecbce1c1da3c7293ab1a8d662285}
-      \strng{authornamehash}{4472bfcdd46f7d8c461d13a51f544594}
-      \strng{authorfullhash}{6f79e74d61970d5b9a9ef095dc53ac0e}
+      \strng{namehash}{8357de6f2714533d08059670ab3ea016}
+      \strng{fullhash}{e04e5808dc0d0ec733212b81e1f8c78a}
+      \strng{bibnamehash}{e04e5808dc0d0ec733212b81e1f8c78a}
+      \strng{authorbibnamehash}{e04e5808dc0d0ec733212b81e1f8c78a}
+      \strng{authornamehash}{8357de6f2714533d08059670ab3ea016}
+      \strng{authorfullhash}{e04e5808dc0d0ec733212b81e1f8c78a}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1609.02907}
+      \field{langid}{english}
+      \field{title}{Semi-supervised classification with graph convolutional networks}
+      \field{usera}{J}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \keyw{kipf2016semi}
+    \endentry
+    \entry{gilmer2017neural}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=4f550339f0337905aa634f39e1ba4833}{%
+           family={Gilmer},
+           familyi={G\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=aa3475bbb938eec3f9f0d7c8d44f1e86}{%
+           family={Schoenholz},
+           familyi={S\bibinitperiod},
+           given={Samuel\bibnamedelima S},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=e9632c2c29a574cd09a5a7503be60435}{%
+           family={Riley},
+           familyi={R\bibinitperiod},
+           given={Patrick\bibnamedelima F},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=494b568c5dc85ba8f3f409635f9c5f25}{%
+           family={Vinyals},
+           familyi={V\bibinitperiod},
+           given={Oriol},
+           giveni={O\bibinitperiod}}}%
+        {{hash=b2367e57c17225a47853346440e87b35}{%
+           family={Dahl},
+           familyi={D\bibinitperiod},
+           given={George\bibnamedelima E},
+           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{organization}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{c654290e16b9e71825428d767650ff2a}
+      \strng{fullhash}{a97dbeb15b563be460fc056e7a076a4b}
+      \strng{bibnamehash}{1ab130b708773e11c09720d73267b49c}
+      \strng{authorbibnamehash}{1ab130b708773e11c09720d73267b49c}
+      \strng{authornamehash}{c654290e16b9e71825428d767650ff2a}
+      \strng{authorfullhash}{a97dbeb15b563be460fc056e7a076a4b}
       \field{sortinit}{8}
       \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{AI magazine}
+      \field{booktitle}{International conference on machine learning}
       \field{langid}{english}
-      \field{number}{3}
-      \field{title}{Collective classification in network data}
-      \field{usera}{J}
+      \field{title}{Neural message passing for quantum chemistry}
+      \field{usera}{C}
       \field{userd}{english}
       \field{userf}{english}
-      \field{volume}{29}
-      \field{year}{2008}
+      \field{year}{2017}
       \field{dateera}{ce}
-      \field{pages}{93\bibrangedash 93}
-      \range{pages}{1}
-      \keyw{sen2008collective}
-    \endentry
-    \entry{hu2020open}{article}{}
-      \name{author}{8}{}{%
-        {{hash=164c7f22cde069c57bf9b80f76441fa9}{%
-           family={Hu},
-           familyi={H\bibinitperiod},
-           given={Weihua},
-           giveni={W\bibinitperiod}}}%
-        {{hash=2667edba6b12b863d4fc7ec3afba0ede}{%
-           family={Fey},
-           familyi={F\bibinitperiod},
-           given={Matthias},
-           giveni={M\bibinitperiod}}}%
-        {{hash=5f1df07c5fbd5a91d0e32b8697082857}{%
-           family={Zitnik},
-           familyi={Z\bibinitperiod},
-           given={Marinka},
-           giveni={M\bibinitperiod}}}%
-        {{hash=5fd8ccf894ae8131d46d95e71572ffae}{%
-           family={Dong},
-           familyi={D\bibinitperiod},
-           given={Yuxiao},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=f136c99c06f10d114554179d4722b864}{%
-           family={Ren},
-           familyi={R\bibinitperiod},
-           given={Hongyu},
-           giveni={H\bibinitperiod}}}%
-        {{hash=405a3ad8dc4c66f7ccc340047cb033d3}{%
-           family={Liu},
-           familyi={L\bibinitperiod},
-           given={Bowen},
-           giveni={B\bibinitperiod}}}%
-        {{hash=4d8195891e857816c8f42626f464a3a8}{%
-           family={Catasta},
-           familyi={C\bibinitperiod},
-           given={Michele},
-           giveni={M\bibinitperiod}}}%
-        {{hash=900d107125ff0ca84698cb909e4f6c51}{%
-           family={Leskovec},
-           familyi={L\bibinitperiod},
-           given={Jure},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \strng{namehash}{cad0c39c4cb7349e353b89519c632fc9}
-      \strng{fullhash}{ce1855a2f200320d635b4b554082995f}
-      \strng{bibnamehash}{15de1a78b688f5e1daf2849c9671310b}
-      \strng{authorbibnamehash}{15de1a78b688f5e1daf2849c9671310b}
-      \strng{authornamehash}{cad0c39c4cb7349e353b89519c632fc9}
-      \strng{authorfullhash}{ce1855a2f200320d635b4b554082995f}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Advances in neural information processing systems}
-      \field{langid}{english}
-      \field{title}{Open graph benchmark: Datasets for machine learning on graphs}
-      \field{usera}{J}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{volume}{33}
-      \field{year}{2020}
-      \field{dateera}{ce}
-      \field{pages}{22118\bibrangedash 22133}
-      \range{pages}{16}
-      \keyw{hu2020open}
-    \endentry
-    \entry{zeng2019graphsaint}{article}{}
-      \name{author}{5}{}{%
-        {{hash=46def165a2f198288abcb663a8e78ea2}{%
-           family={Zeng},
-           familyi={Z\bibinitperiod},
-           given={Hanqing},
-           giveni={H\bibinitperiod}}}%
-        {{hash=e29833ee1707ffa6672202116aaf88ed}{%
-           family={Zhou},
-           familyi={Z\bibinitperiod},
-           given={Hongkuan},
-           giveni={H\bibinitperiod}}}%
-        {{hash=39c6ce66605b1beb12aa301eb7b7d6a0}{%
-           family={Srivastava},
-           familyi={S\bibinitperiod},
-           given={Ajitesh},
-           giveni={A\bibinitperiod}}}%
-        {{hash=8c75dbe2e68808251371edb193c33d2e}{%
-           family={Kannan},
-           familyi={K\bibinitperiod},
-           given={Rajgopal},
-           giveni={R\bibinitperiod}}}%
-        {{hash=276a91bbb61cbdced5c5649eafd6d5da}{%
-           family={Prasanna},
-           familyi={P\bibinitperiod},
-           given={Viktor},
-           giveni={V\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {english}%
-      }
-      \strng{namehash}{9e59af265112a7a7f24e94ae87864826}
-      \strng{fullhash}{c8c189742224f6f71275f1ec12047b7e}
-      \strng{bibnamehash}{f3613bad76f507a24297fdd01f2401cc}
-      \strng{authorbibnamehash}{f3613bad76f507a24297fdd01f2401cc}
-      \strng{authornamehash}{9e59af265112a7a7f24e94ae87864826}
-      \strng{authorfullhash}{c8c189742224f6f71275f1ec12047b7e}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:1907.04931}
-      \field{langid}{english}
-      \field{title}{Graphsaint: Graph sampling based inductive learning method}
-      \field{usera}{J}
-      \field{userd}{english}
-      \field{userf}{english}
-      \field{year}{2019}
-      \field{dateera}{ce}
-      \keyw{zeng2019graphsaint}
+      \field{pages}{1263\bibrangedash 1272}
+      \range{pages}{10}
+      \keyw{gilmer2017neural}
     \endentry
   \enddatalist
 \endrefsection

@@ -1,0 +1,22 @@
+\begin{section}{背景}
+    \textbf{图形神经网络}。GNN的目的是在一个具有节点表征
+    $\textit{X}\in\textit{R}^{\vert\textit{V}\vert\times d}$
+    的图上学习信号/特征的函数，其中$d$表示节点特征维度。对于典型的半监督节点分类任务~\cite{kipf2016semi}，其中每个节点都与一个标签相关、 一个层的GNN 参数化为被训练来学习节点表征，这样可以被准确预测。GNN的训练过程实际上可以描述为基于\textit{消息传递机制}~\cite{gilmer2017neural}的节点表示学习。从分析上看，给定一个图和一个节点，GNN的第三层被定义为
+    \begin{equation}
+        \label{eq:gnn}
+        \vspace{-1mm}
+        \begin{split}
+            \mathbf{h}_{v}^{(\ell+1)} &= \boldsymbol{f}_{\boldsymbol{\theta}}^{(\ell+1)} \bigg(\mathbf{h}_{v}^{(\ell)}, \big\{\!\!\big\{ \mathbf{h}^{(\ell)}_u  \big\}\!\!\big\}_{u \in \mathcal{N}(v)} \bigg) \\
+            &= \Psi^{(\ell+1)}_{\boldsymbol{\theta}}\bigg( \mathbf{h}_{v}^{(\ell)},  \Phi^{(\ell+1)}_{\boldsymbol{\theta}}\Big(\big\{\!\!\big\{\mathbf{h}^{(\ell)}_u  \big\}\!\!\big\}_{u \in \mathcal{N}(v)}\Big) \bigg),
+        \end{split}
+        \vspace{-2mm}
+        \end{equation}
+    其中，$\textit{h}_{v}^{(\textit{l})}$表示节点$v$在$\ell$第三层的表示, $\textbf{h}^{(0)}_{v}$ 被初始化为 $\textbf{x}_{v}$($\textbf{X}$中第$v$行), $mathcal{N}(v)$表示节点$v$的邻居集合。
+    GNN的每一层，即$\boldsymbol{f}_{\boldsymbol{\theta}}^{(\ell)}$，可以进一步分解为两个部分：
+    1) 聚合函数$\Phi^{(\ell)}_{\boldsymbol{\theta}}$，它将节点$v$的邻居的节点表示作为输入，输出聚合的邻居表示。
+    2) 更新函数$\Psi^{(\ell)}_{\boldsymbol{\theta}}$，它结合$v$的表示和聚集的邻域表示，为下一层更新节点$v$的表示。
+    $\Phi^{(\ell)}_{\boldsymbol{\theta}}$和$\Psi^{(\ell)}_{\boldsymbol{\theta}}$都可以选择在不同类型的GNN中使用各种函数。
+    为了在一台机器上训练GNN，我们可以在训练数据的整个图上使经验损失$\mathcal{L}(\boldsymbol{\theta})$最小化，即$\mathcal{L}(\boldsymbol{\theta}) = \vert\mathcal{V}\vert^{-1}\sum\nolimits_{v\in\mathcal{V}}。Loss\big(\mathbf{h}_{v}^{(L)},\mathbf{y}_{v}\big)$,
+    其中$Loss(\cdot,\cdot)$表示损失函数（如交叉熵损失），$\mathbf{h}_{v}^{(L)}$表示来自GNN最后一层的节点$v$的表示。
+\end{section}
+

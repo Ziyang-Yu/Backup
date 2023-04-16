@@ -7,47 +7,10 @@
 \section*{实验设置的细节}
 
 
-所有的实验都是在AWS上的EC2 {texttt{g4dn.metal}}虚拟机（VM）实例上进行的，该实例拥有8美元的NVIDIA T4 GPU，96美元的vCPUs，384美元~GB的主内存。其他重要信息，包括操作系统版本、Linux内核版本和CUDA版本，在表~ref{tab:版本}中进行了总结。为了公平比较，我们对所有10个框架，PipeGCN、PipeGCN$^{+}$、GNNAutoscale、GNNAutoscale$^{+}$、DIGEST、DIGEST$^{+}$、VRGCN、VRGCN$^{+}$、DIGEST-A和DIGEST-A$^{+}$使用相同的优化器（亚当）、学习率和图划分算法。
+所有的实验都是在AWS上的EC2 {\textbf{g4dn.metal}}虚拟机（VM）实例上进行的，该实例拥有8美元的NVIDIA T4 GPU，96美元的vCPUs，384美元~GB的主内存。其他重要信息，包括操作系统版本、Linux内核版本和CUDA版本，在表~ref{tab:版本}中进行了总结。为了公平比较，我们对所有10个框架，PipeGCN、PipeGCN$^{+}$、GNNAutoscale、GNNAutoscale$^{+}$、DIGEST、DIGEST$^{+}$、VRGCN、VRGCN$^{+}$、DIGEST-A和DIGEST-A$^{+}$使用相同的优化器（亚当）、学习率和图划分算法。
 对于PipeGCN、GNNAutoscale、DIGEST、VRGCN、DIGEST-A独有的参数，如每个节点从每层采样的邻居数和层数，我们为PipeGCN$^{+}$、GNNAutoscale$^{+}$、DIGEST$^{+}$、VRGCN$^{+}$和DIGEST-A$^{+}$选择相同值。
-%/yuec{不是DGL??}。
-这十个框架中的每一个都有一套专门针对该框架的参数；对于这些专属参数，我们对其进行调整，以达到最佳性能。请参考texttt{small\_benchmark/conf}下的配置文件，了解所有模型和数据集的详细配置设置。
 
-我们使用七个数据集： Cora~\cite{sen2008collective}, Citeseer~\cite{sen2008collective}, Pubmed~\cite{sen2008collective}, OGB-Arxiv~\cite{hu2020open}, Flickr~\cite{zeng2019graphsaint}, Reddit~\cite{zeng2019graphsaint}, and OGB-Products~\cite{hu2020open}进行评估。这些数据集的详细信息在表~\ref{tab:dataset}中进行了总结。
+这十个框架中的每一个都有一套专门针对该框架的参数；对于这些专属参数，我们对其进行调整，以达到最佳性能。请参考\textbf{small\_benchmark/conf}下的配置文件，了解所有模型和数据集的详细配置设置。
 
-
-\begin{table}[h]
-    \centering
-    \caption{我们测试平台的环境设置概要}
-    \label{tab:versions}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{ccccccc}
-    \hline
-    OS    & Linux kernel & CUDA & Driver    & PyTorch & PyTorch Geometric & PyTorch Sparse \\ \hline
-    Ubuntu~20.04 & 5.15.0  & 11.6 & 510.73.08 & 1.12.1  & 2.2.0          & 0.6.16     \\ \hline
-    \end{tabular}%
-    }
-\end{table}
-
-
-
-
-\begin{table}[h]
-    \large
-    \centering
-    \caption{数据集概要}
-    \label{tab:dataset}
-    % \resizebox{\textwidth}{!}{%
-    \begin{tabular}{llllll}
-    \hline
-    Dataset      & \#~Nodes   & \#~Edges     & \#~Features & \#~Classes \\ \hline
-    Cora         & 2,708      & 10,556        & 1,433      & 7            \\
-    Citeseer     & 3,327	     & 9,104	   & 3,703	    & 6            \\
-    Pubmed       & 19,717	 & 88,648	   & 500	    & 3            \\
-    Flickr       & 89,250    & 899,756     & 500        & 7            \\
-    Reddit       & 232,965   & 23,213,838  & 602        & 41           \\
-    OGB-Arixv    & 169,343   & 2,315,598   & 128        & 40           \\
-    OGB-Products & 2,449,029 & 123,718,280 & 100        & 47           \\ \hline
-    \end{tabular}%
-    \end{table}
 
 

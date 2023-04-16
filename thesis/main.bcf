@@ -2499,14 +2499,9 @@
     <bcf:citekey order="6">fey2021gnnautoscale</bcf:citekey>
     <bcf:citekey order="6">wan2022pipegcn</bcf:citekey>
     <bcf:citekey order="6">chai2022distributed</bcf:citekey>
-    <bcf:citekey order="7">fey2021gnnautoscale</bcf:citekey>
-    <bcf:citekey order="8">sen2008collective</bcf:citekey>
-    <bcf:citekey order="9">sen2008collective</bcf:citekey>
-    <bcf:citekey order="10">sen2008collective</bcf:citekey>
-    <bcf:citekey order="11">hu2020open</bcf:citekey>
-    <bcf:citekey order="12">zeng2019graphsaint</bcf:citekey>
-    <bcf:citekey order="13">zeng2019graphsaint</bcf:citekey>
-    <bcf:citekey order="14">hu2020open</bcf:citekey>
+    <bcf:citekey order="7">kipf2016semi</bcf:citekey>
+    <bcf:citekey order="8">gilmer2017neural</bcf:citekey>
+    <bcf:citekey order="9">fey2021gnnautoscale</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
