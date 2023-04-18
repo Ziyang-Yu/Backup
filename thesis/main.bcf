@@ -2501,7 +2501,13 @@
     <bcf:citekey order="6">chai2022distributed</bcf:citekey>
     <bcf:citekey order="7">kipf2016semi</bcf:citekey>
     <bcf:citekey order="8">gilmer2017neural</bcf:citekey>
-    <bcf:citekey order="9">fey2021gnnautoscale</bcf:citekey>
+    <bcf:citekey order="9">wu2022graph</bcf:citekey>
+    <bcf:citekey order="10">he2016identity</bcf:citekey>
+    <bcf:citekey order="11">chen2018stochastic</bcf:citekey>
+    <bcf:citekey order="11">fey2021gnnautoscale</bcf:citekey>
+    <bcf:citekey order="11">wan2022pipegcn</bcf:citekey>
+    <bcf:citekey order="12">chen2020measuring</bcf:citekey>
+    <bcf:citekey order="13">fey2021gnnautoscale</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

@@ -1,16 +1,16 @@
 # Fdb version 3
-["biber main"] 1681655151 "main.bcf" "main.bbl" "main" 1681655160
-  "main.bcf" 1681655160 115555 2a78648d9b2597816fd3652f15b4a23e ""
+["biber main"] 1681822277 "main.bcf" "main.bbl" "main" 1681822289
+  "main.bcf" 1681822286 115906 aaf7ec5dfccbc2e4a4fccd8c419be4ab ""
   "ref.bib" 1681570723 21609 bb668394068e3881bb73949e555db425 ""
   (generated)
   "main.bbl"
   "main.blg"
-["xdvipdfmx"] 1681655160 "main.xdv" "main.pdf" "main" 1681655160
-  "main.xdv" 1681655160 141336 6fda7e6f4cbd55e78dedbc33b8991aed "xelatex"
+["xdvipdfmx"] 1681822286 "main.xdv" "main.pdf" "main" 1681822289
+  "main.xdv" 1681822286 207196 f7f395c73d11310cf78bfffe9e5e2f5a "xelatex"
   (generated)
   "main.pdf"
-["xelatex"] 1681655157 "main.tex" "main.xdv" "main" 1681655160
-  "/dev/null" 1681648735 0 d41d8cd98f00b204e9800998ecf8427e ""
+["xelatex"] 1681822284 "main.tex" "main.xdv" "main" 1681822289
+  "/dev/null" 1681779684 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1681564682 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1480098689 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -247,24 +247,27 @@
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1681566721 3740511 18785babdf8a82b7bc898376aabfd808 ""
   "config/info.tex" 1681570475 872 9f1d9ee933ed78c6cdf0822f1761092e ""
   "config/preamble.tex" 1681651223 1377 e314c0ce3522cf1fab847174d24b5436 ""
+  "figures/architecture.png" 1681817059 915830 2b8cefad6ca286088596a9f9066d785f ""
   "figures/logo/SUSTech-zh.pdf" 1658398658 1103514 feb7e2e6a56ab63999d7b4ceaff3b887 ""
-  "main.aux" 1681655160 4720 716313b84501c1c1001ef9dfd789a3c4 ""
-  "main.bbl" 1681655152 37999 5732b85a643678d134debe117d1edf0d "biber main"
-  "main.out" 1681655160 345 afdd1d2bb56873cdd1564e517d9e48b1 ""
-  "main.run.xml" 1681655160 2444 7b551d9aee7f0ff94d0380489d203233 ""
-  "main.tex" 1681649283 2384 d15465febf4f2f205d5a9e6ddadd7d01 ""
-  "main.toc" 1681655160 560 0ce1a1935cdde04d876ea14d0c5c7378 ""
+  "main.aux" 1681822286 6596 5881a0b60593eade2072217bf87e13c9 ""
+  "main.bbl" 1681822278 44166 8aa81eeef7ce91516a3d977b02e5c3bf "biber main"
+  "main.out" 1681822286 624 e633021e2ef927b06e73faf66ca8dadd ""
+  "main.run.xml" 1681822286 2444 7b551d9aee7f0ff94d0380489d203233 ""
+  "main.tex" 1681820253 2465 00619dc5f3e45f9e7955729f2862111d ""
+  "main.toc" 1681822286 878 bc8a07e3246c55bbc83d958dc2d8cc0d ""
   "sections/examples/appendix.tex" 1681650251 1480 67735cc040858aed22957d68e34c3683 ""
   "sections/examples/thanks.tex" 1658398658 870 15d5b803303e219e7ce4a14ed276cf46 ""
   "sections/thesis/abstract.tex" 1681626310 1695 8dddadd68faccc08fb1b332e106cb65e ""
-  "sections/thesis/background.tex" 1681655146 2453 8e97bae0901565ef0d5c364a5f16552b ""
+  "sections/thesis/background.tex" 1681817255 5714 8b32078e530c79ea4dc449a4d2ce6505 ""
   "sections/thesis/introduction.tex" 1681629036 2582 73706b57397764539b924c28da8aa7fe ""
+  "sections/thesis/method.tex" 1681821199 4352 a95ddc66b6426288fe39ec3be8f97cf7 ""
+  "sections/thesis/problem_statement.tex" 1681822279 4776 ae6f5a939d8424502575c651992e5c99 ""
   "sustechthesis.cls" 1658398658 16928 12db2c142db3d681b48fd276735fbfa8 ""
   (generated)
-  "main.out"
-  "main.xdv"
-  "main.log"
   "main.toc"
-  "main.aux"
   "main.bcf"
   "main.run.xml"
+  "main.out"
+  "main.log"
+  "main.xdv"
+  "main.aux"

@@ -844,6 +844,7 @@
       \strng{authorbibnamehash}{d9dc4dc0b6fa3c1cd35cb9f2f0ddc817}
       \strng{authornamehash}{7d822c997b2ed38e8e6392246eec3a29}
       \strng{authorfullhash}{d9dc4dc0b6fa3c1cd35cb9f2f0ddc817}
+      \field{extraname}{1}
       \field{sortinit}{6}
       \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
@@ -1002,6 +1003,174 @@
       \field{pages}{1263\bibrangedash 1272}
       \range{pages}{10}
       \keyw{gilmer2017neural}
+    \endentry
+    \entry{wu2022graph}{incollection}{}
+      \name{author}{5}{}{%
+        {{hash=bfb9e94811d001921a32bfdc17524596}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Lingfei},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a79e6a0454388fc3ede42ca69f997534}{%
+           family={Cui},
+           familyi={C\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod}}}%
+        {{hash=56af930e1f5e2c9a791b71e7b347c0ba}{%
+           family={Pei},
+           familyi={P\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1f1b5a611871b013dd18b84a54bbb23f}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Liang},
+           giveni={L\bibinitperiod}}}%
+        {{hash=da5283630e781fb48ecf4859f54bca52}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Le},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{cbbdc049dc98c57296297d636de04629}
+      \strng{fullhash}{2d939bcb31e601ac077a61e538969e5e}
+      \strng{bibnamehash}{9dd13a14faf6ee842e607390d84b0614}
+      \strng{authorbibnamehash}{9dd13a14faf6ee842e607390d84b0614}
+      \strng{authornamehash}{cbbdc049dc98c57296297d636de04629}
+      \strng{authorfullhash}{2d939bcb31e601ac077a61e538969e5e}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Graph Neural Networks: Foundations, Frontiers, and Applications}
+      \field{langid}{english}
+      \field{title}{Graph neural networks}
+      \field{usera}{G}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{pages}{27\bibrangedash 37}
+      \range{pages}{11}
+      \keyw{wu2022graph}
+    \endentry
+    \entry{he2016identity}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{3733dbdff90171390240438fddfbc952}
+      \strng{authorbibnamehash}{3733dbdff90171390240438fddfbc952}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European conference on computer vision}
+      \field{langid}{english}
+      \field{title}{Identity mappings in deep residual networks}
+      \field{usera}{C}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{630\bibrangedash 645}
+      \range{pages}{16}
+      \keyw{he2016identity}
+    \endentry
+    \entry{chen2020measuring}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=0f59312af35da1f26d823cb378550d26}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Deli},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e2994df0daa7033ced5356a51eed0321}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Yankai},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=be6f1b6df7f1ddfafad18806238fa391}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=24bece773e8873ff8f03d9a3eced56df}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod}}}%
+        {{hash=873b7b14d7a3c7290a8ad393066ee9a3}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=281895c524b32a9ec1c3fbca8253baaa}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Xu},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {english}%
+      }
+      \strng{namehash}{559ee54e66266a068bd8d682872f6807}
+      \strng{fullhash}{dcae6fd523c8b0a2cd8d66359d6dd43f}
+      \strng{bibnamehash}{d5be49e7b0957a9691777a054f554b03}
+      \strng{authorbibnamehash}{d5be49e7b0957a9691777a054f554b03}
+      \strng{authornamehash}{559ee54e66266a068bd8d682872f6807}
+      \strng{authorfullhash}{dcae6fd523c8b0a2cd8d66359d6dd43f}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the AAAI Conference on Artificial Intelligence}
+      \field{langid}{english}
+      \field{number}{04}
+      \field{title}{Measuring and relieving the over-smoothing problem for graph neural networks from the topological view}
+      \field{usera}{C}
+      \field{userd}{english}
+      \field{userf}{english}
+      \field{volume}{34}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{pages}{3438\bibrangedash 3445}
+      \range{pages}{8}
+      \keyw{chen2020measuring}
     \endentry
   \enddatalist
 \endrefsection

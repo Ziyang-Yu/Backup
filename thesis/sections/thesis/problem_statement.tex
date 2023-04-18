@@ -1,0 +1,34 @@
+\begin{section}{问题描述}
+    \textbf{分布式GNN训练下的时态图预测.} 我们遵循Eq.~\ref{eq:mini-batch}和Eq.~\ref{eq:distributed loss}中定义的GNN的分区并行分布式训练。考虑到任何分区$\mathcal{G}_m$，我们将Eq.~\ref{eq:mini-batch}以矩阵形式重新表述为
+    
+    \begin{equation}
+        \mathbf{H}_{in}^{(\ell+1,m)} = \boldsymbol{f}_{\boldsymbol{\theta}}^{(\ell+1)}\Big(\mathbf{H}_{in}^{(\ell,m)},\mathbf{H}_{out}^{(\ell,m)}\Big),
+    \label{eq:matrix form forward}
+    \end{equation}
+
+    其中$\mathbf{H}_{in}^{(\ell,m)}$和$\mathbf{H}_{out}^{(\ell,m)}$分别表示分区$\mathcal{G}_m$上第$\ell$层的子图内和子图外节点嵌入矩阵。如前所述，直接在每个子图之间交换$\mathbf{H}_{out}^{(\ell,m)}$ 将导致指数级的通信成本。现有的方法通过存储在离线存储器中的历史值对$\mathbf{H}_{out}^{(\ell,m)}$进行近似，即 $\mathbf{H}_{out}^{(\ell,m)} \approx \mathbf{\Tilde{H}}_{out}^{(\ell,m)}$， 这导致了$\delta\mathbf{H}^{(\ell,m)} = \mathbf{H}_{out}^{(\ell,m)} - \mathbf{\Tilde{H}}_{out}^{(\ell,m)}$。相反，我们考虑以数据驱动的方式预测$\mathbf{H}_{out}^{(\ell,m)}$ ，使预测的嵌入$\mathbf{\hat{H}}_{out}^{(\ell,m)}$具有较小的滞后性。
+
+    在这项工作中，我们创新性地将分布式GNN训练下的嵌入预测任务表述为对时态图演化模式的建模。
+
+    具体来说，考虑$\mathcal{\Bar{G}}_{m}= (\mathcal{\Bar{V}}_{m},\mathcal{\Bar{E}}_{m})$的子图，该子图由$\mathcal{G}^{(t)}_{m}$及其1-\emph{hop}邻居诱导。
+由于$\mathbf{H}_{in}^{(m)}$和$\mathbf{H}_{out}^{(m)}$ 在训练过程中不断变化（即、 在历时中），图的序列$\mathcal{\Bar{G}}^{(t)}_{m}= (\mathcal{\Bar{V}}_{m},\mathcal{\Bar{E}}_{m},\mathbf{H}_{in}^{(t,m)},\mathbf{H}_{out}^{(t,m)})$，$t=1,2,\cdots,T$成为一个具有固定拓扑结构的\emph{时空图}~\cite{wu2022graph}，其中$T$表示历时的总数。
+
+我们的目标是建立一个模型，积极主动地捕捉不断变化的模式，并以在线方式预测嵌入。详细来说，给定时间图$\{\mathcal{\Bar{G}}^{(s)}: t-\tau\leq s\leq t\}$到历时$t$，其中$\tau$表示滑动窗口长度，我们学习一个映射函数$M_{\boldsymbol{\omega}}$，参数为$\boldsymbol{\omega}$，这样它可以预测下一个历时的子图外嵌入$\mathbf{\hat{H}}_{out}^{(t+1,m)}$。对$M_{\boldsymbol{\omega}}$的训练和推理在每个历时$t=1,2,\cdots,T-1$进行一次。
+
+尽管有此必要，但由于现有的几个挑战，如何处理上述问题是一个开放的研究领域： 1). 难以设计出一种高效的、可扩展的减少呆滞性的算法。2). 嵌入的未知和复杂演变。3).由于嵌入的未知动态性，在理论上很难获得对具有预测嵌入的分布式GNN框架的性能和收敛性的保证。
+
+\textbf{训练目标}。为了有效而廉价地获得辅助模型的监督，我们提出了一种弱监督的误差回归损失来训练辅助模型，它带来的额外计算成本几乎为零。具体来说，对于任何子图外的节点$u \in \mathcal{N}(v) \setminus \mathcal{G}_{m}$，一定存在另一个子图$\mathcal{G}_{n}$，使得$u \in \mathcal{G}_{n}$（每个节点必须属于某些图的分区）。在子图$\mathcal{G}_{n}$上用$u$替换节点$v$，在Eq.~\ref{eq:synthetic forward}中可以得到$\mathbf{h}_{u}^{(\ell)}$，其中的计算在GNN模型的前向传播中是/emph{hidden}。用$\mathbf{h}_{u}^{(\ell)}$ 减去$\mathbf{\Tilde{h}}^{(\ell)}_u$ 的结果是地 真相嵌入误差 $\Delta\mathbf{h}^{(\ell)}_u = \mathbf{h}_{u}^{(\ell)} - \mathbf{\Tilde{h}}^{(\ell)}_u$、 而辅助模型$M_{\ell}(\cdot)$的训练损失可以定义为$M_{\ell}(\cdot)$, 
+\begin{equation}
+    \min\;\; \sum\nolimits_{u\in\mathcal{G}} \big\Vert \Delta\mathbf{\hat{h}}^{(\ell)}_u - \Delta\mathbf{h}^{(\ell)}_u \big\Vert_{2}^{2},
+\label{eq:aux model loss}
+\end{equation}
+其中最小化是在$M_{\ell}$的参数上。我们的上述目标函数可以通过从$\mathcal{G}$中取样的小批次轻松地扩展到随机训练，这就允许了\emph{可控}的训练样本量，这取决于辅助模型的效率和性能之间的权衡。
+
+\textbf{备注} \textbf{1).}。如公式所示~\ref{eq:aux def 1}，辅助模型借用了skip-connection~\cite{he2016identity}的思想，辅助模型的预测可以解释为一个错误\emph{修正}项，它纠正了前一时代嵌入的呆滞性。\textbf{2）.}。我们在Eq.~\ref{eq:synthetic forward}中的表述是相当普遍的，而且是与模型无关的。现有的具有历史嵌入的GNN训练框架~\cite{chen2018stochastic,fey2021gnnautoscale,wan2022pipegcn}可以享受我们的预测嵌入来进一步提升他们的性能。
+
+
+
+
+
+
+\end{section}

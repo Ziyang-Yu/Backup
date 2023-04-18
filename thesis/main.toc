@@ -4,8 +4,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.}背景}{1}{section.2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{参考文献}{3}{section*.1}% 
+\contentsline {section}{\numberline {3.}问题描述}{3}{section.3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{附录}{5}{section*.2}% 
+\contentsline {section}{\numberline {4.}解决方法}{4}{section.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{致谢}{6}{section*.3}% 
+\contentsline {subsection}{\numberline {4.1}框架}{4}{subsection.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{参考文献}{6}{section*.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{附录}{8}{section*.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{致谢}{9}{section*.4}% 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2023.4.15)  16 APR 2023 22:25
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2023.4.15)  18 APR 2023 20:51
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -2192,8 +2192,20 @@ Missing character: There is no 。 in font cmr12!
  [1
 
 
-])
-[2]
+]
+File: figures/architecture.png Graphic file (type bmp)
+<figures/architecture.png>
+)
+(./sections/thesis/problem_statement.tex [2]
+Overfull \hbox (33.60825pt too wide) in paragraph at lines 13--15
+\OT1/cmr/bx/n/12.045 H[]$ \TU/simsun.ttc(0)/m/n/12.045 和 $\OT1/cmr/bx/n/12.045 
+H[]$ \TU/simsun.ttc(0)/m/n/12.045 在 训 练 过 程 中 不 断 变 化  |（即、|  在 历 时 中） ，|  图 的 
+序 列 $[] \OT1/cmr/m/n/12.045 = ([]\OML/cmm/m/it/12.045 ; []; \OT1/cmr/bx/n/12.04
+5 H[]\OML/cmm/m/it/12.045 ; \OT1/cmr/bx/n/12.045 H[]\OT1/cmr/m/n/12.045 )$\TU/s
+imsun.ttc(0)/m/n/12.045 ，|
+ []
+
+[3]) (./sections/thesis/method.tex [4]) [5]
 
 Package fontspec Warning: Font "FandolFang-Regular" does not contain requested
 (fontspec)                Script "CJK".
@@ -2222,50 +2234,50 @@ Slant={0.167}].
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 
-Overfull \hbox (0.18602pt too wide) in paragraph at lines 52--52
+Overfull \hbox (0.18602pt too wide) in paragraph at lines 54--54
 \TU/times(0)/m/n/12.045 recommender systems[C]\TU/lmtt/m/n/12.045 //\TU/times(0
 )/m/n/12.045 Proceedings of the 24th ACM SIGKDD international con-
  []
 
 
-Overfull \hbox (53.03465pt too wide) in paragraph at lines 52--52
+Overfull \hbox (53.03465pt too wide) in paragraph at lines 54--54
 \TU/times(0)/m/n/12.045 Distributed Algorithm for Training Graph Neural Network
 s[J]. ArXiv preprint arXiv:2111.08202,
  []
 
 
-Overfull \hbox (67.7243pt too wide) in paragraph at lines 52--52
+Overfull \hbox (67.7243pt too wide) in paragraph at lines 54--54
 \TU/times(0)/m/n/12.045 convolutional networks with pipelined feature communica
 tion[J]. ArXiv preprint arXiv:2203.10428,
  []
 
-[3
+[6
 
-] [4] (./sections/examples/appendix.tex) [5
+] [7] (./sections/examples/appendix.tex) [8
 
 
-] (./sections/examples/thanks.tex) [6
+] (./sections/examples/thanks.tex) [9
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 57.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 57.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 59.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: AFDD1D2BB56873CDD1564E517D9E48B1.
+(rerunfilecheck)             Checksum: E633021E2EF927B06E73FAF66CA8DADD.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 57.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
  ) 
 Here is how much of TeX's memory you used:
- 52370 strings out of 492912
- 1044742 string characters out of 6134893
- 1732538 words of memory out of 5000000
- 55713 multiletter control sequences out of 15000+600000
- 546809 words of font info for 127 fonts, out of 8000000 for 9000
+ 52445 strings out of 492912
+ 1047505 string characters out of 6134893
+ 1733385 words of memory out of 5000000
+ 55776 multiletter control sequences out of 15000+600000
+ 546833 words of font info for 130 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 62i,19n,83p,886b,4965s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,24n,83p,886b,4965s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.xdv (11 pages, 141336 bytes).
+Output written on main.xdv (14 pages, 207196 bytes).

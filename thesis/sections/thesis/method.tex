@@ -1,0 +1,29 @@
+\begin{section}{解决方法}
+    在这一节中，我们介绍了我们提出的呆滞性-减弱分布式GNN训练框架，以解决上述挑战。对于第一个挑战，我们建立了一个子图不变的弱监督辅助模块，用于未来的嵌入预测，该模块以数据驱动的方式减少呆滞性，并具有良好的可扩展性。对于第二个挑战，我们建议将GNN与递归结构结合起来，这样前者可以捕获节点连接中的信息，后者可以捕获时间演变的信息。同时，我们的在线设计允许辅助模块和分布式GNN交替训练，并使之相互受益。我们通过引入下采样预训练和自适应微调频率，进一步提高辅助模块的性能和效率。最后，为了应对最后的挑战，我们探讨了所引入的辅助模块在分布式环境下如何影响模型性能和收敛的理论保证。
+
+
+    \begin{subsection}{框架} 
+        在本地机器上训练的GNN的每个副本将利用所有可用的图信息，即在前向和后向传播中都放弃了边缘。从分析上看，计算每个本地梯度$\nabla\mathcal{L}_{m}^{\text{Local}}$，如公式~\ref{eq:distributed loss}中定义的，将涉及子图外的邻居信息。
+        对于子图外的邻居节点，我们考虑使用由辅助模型(表示为 $\mathbf{\hat{h}}^{(\ell)}_{v}$)预测的\emph{predicted embedding}代替真实嵌入。形式上，给定$v\in\mathcal{G}_{m}(\mathcal{V}_{m},\mathcal{E}_{m})$ 的节点来自第$m$个子图，通过修改Eq.~\ref{eq:mini-batch}实现前向传播。
+        \begin{equation}
+            \begin{split}
+            \mathbf{h}_{v}^{(\ell+1)} = \boldsymbol{f}^{(\ell+1)}_{\boldsymbol{\theta}}\Big( \mathbf{h}_{v}^{(\ell)}, &\big\{\!\!\big\{\mathbf{h}^{(\ell)}_u \big\}\!\!\big\}_{u \in  \mathcal{N}(v)   \cap \mathcal{G}_{m}} \\ &\cup \underbrace{\big\{\!\!\big\{\mathbf{\hat{h}}^{(\ell)}_u  \big\}\!\!\big\}_{u \in \mathcal{N}(v) \setminus \mathcal{G}_{m}}}_{\text{predicted embedding}} \Big),
+        \end{split}
+        \label{eq:synthetic forward}
+        \end{equation}
+    \end{subsection}
+    其中 $\forall$ $u \in \mathcal{N}(v) \setminus \mathcal{G}_{m}$ 满足
+
+    \begin{equation}
+        \begin{split}
+            \mathbf{\hat{h}}^{(\ell)}_u = \mathbf{\Tilde{h}}^{(\ell)}_u + \Delta\mathbf{\hat{h}}^{(\ell)}_u,\quad\Delta\mathbf{\hat{h}}^{(\ell)}_u = M_{\ell}\big(\mathbf{\Tilde{h}}^{(\ell)}_u, \xi\big).
+        \end{split}
+    \label{eq:aux def 1}
+    \end{equation}
+
+    这里，$\mathbf{\Tilde{h}}^{(\ell)}_u$表示前一个历时的嵌入，$M_{\ell}(\cdot)$表示$\ell$第三层的辅助模型。$\xi$表示任何其他历史信息作为$M_{\ell}(\cdot)$的额外输入。如公式~\ref{eq:aux def 1}所示，预测的嵌入等同于前一纪元的嵌入加上一个误差项，这个误差项是由辅助模型仅根据历史信息预测的。
+
+    请注意，在Eq~\ref{eq:aux def 1}中，我们的辅助模型是在不同的子图中共享的（$M_{\ell}(\cdot)$不含$m$）。原因有3个方面： \textbf{1).}。从理论上讲，在分割之前，所有的子图都来自同一个全局输入图，因此共享相同的嵌入分布。我们通过在不同的子图/分区中共享我们的辅助模块来编码这种归纳偏见，这使得辅助模块能够捕捉重要的或重复的模式，而不考虑子图的差异。 \textbf{2).}。实际上，由于过度平滑的问题，GNN模型的层次相对较浅~\cite{chen2020measuring}。另一方面，现代图可以轻易地超过数百万个节点。为了处理这样巨大的图，人们必须将其划分为大量的子图，以便将每个子图装入一个GPU。因此，在分布式GNN问题中，我们通常有$M\gg L$，所以一个更有效的内存方式是在不同的子图上共享辅助模型。\textbf{3).}。更重要的是，这种共享策略还可以增加辅助模型的训练样本量，从而提高辅助模型的\emph{generalizability}。如公式~\ref{eq:aux model loss}所示，$M_{\ell}$享有整个输入图$\mathcal{G}$的训练样本量（即$\vert\mathcal{V}(\mathcal{G})\vert$），而针对分区的辅助模型，即 $M_{\ell,m}$ 只能有最多$\big\vert\mathcal{V}\big(\mathcal{N}(\mathcal{G}_{m}) \setminus \mathcal{G}_{m}\big)\big\vert$样本来学习，这是子图$\mathcal{G}_m$的1-emph{hop}邻居数量。
+
+
+\end{section}

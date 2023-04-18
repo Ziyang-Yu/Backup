@@ -458,6 +458,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm
+INPUT figures/architecture.png
+INPUT sections/thesis/problem_statement.tex
+INPUT sections/thesis/problem_statement.tex
+INPUT sections/thesis/method.tex
+INPUT sections/thesis/method.tex
 INPUT sections/examples/appendix.tex
 INPUT sections/examples/appendix.tex
 INPUT sections/examples/thanks.tex
