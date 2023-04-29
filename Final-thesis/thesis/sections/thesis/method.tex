@@ -1,0 +1,74 @@
+\begin{section}{解决方法}
+    在这一节中，我们介绍了我们提出的呆滞性-减弱分布式GNN训练框架，以解决上述挑战。对于第一个挑战，我们建立了一个子图不变的弱监督辅助模块，用于未来的嵌入预测，该模块以数据驱动的方式减少呆滞性，并具有良好的可扩展性。对于第二个挑战，我们建议将GNN与递归结构结合起来，这样前者可以捕获节点连接中的信息，后者可以捕获时间演变的信息。同时，我们的在线设计允许辅助模块和分布式GNN交替训练，并使之相互受益。我们通过引入下采样预训练和自适应微调频率，进一步提高辅助模块的性能和效率。最后，为了应对最后的挑战，我们探讨了所引入的辅助模块在分布式环境下如何影响模型性能和收敛的理论保证。
+
+
+    \begin{subsection}{框架} 
+        在本地机器上训练的GNN的每个副本将利用所有可用的图信息，即在前向和后向传播中都放弃了边缘。从分析上看，计算每个本地梯度$\nabla\mathcal{L}_{m}^{\text{Local}}$，如公式~\ref{eq:distributed loss}中定义的，将涉及子图外的邻居信息。
+        对于子图外的邻居节点，我们考虑使用由辅助模型(表示为 $\mathbf{\hat{h}}^{(\ell)}_{v}$)预测的\emph{predicted embedding}代替真实嵌入。形式上，给定$v\in\mathcal{G}_{m}(\mathcal{V}_{m},\mathcal{E}_{m})$ 的节点来自第$m$个子图，通过修改Eq.~\ref{eq:mini-batch}实现前向传播。
+        \begin{equation}
+            \begin{split}
+            \mathbf{h}_{v}^{(\ell+1)} = \boldsymbol{f}^{(\ell+1)}_{\boldsymbol{\theta}}\Big( \mathbf{h}_{v}^{(\ell)}, &\big\{\!\!\big\{\mathbf{h}^{(\ell)}_u \big\}\!\!\big\}_{u \in  \mathcal{N}(v)   \cap \mathcal{G}_{m}} \\ &\cup \underbrace{\big\{\!\!\big\{\mathbf{\hat{h}}^{(\ell)}_u  \big\}\!\!\big\}_{u \in \mathcal{N}(v) \setminus \mathcal{G}_{m}}}_{\text{predicted embedding}} \Big),
+        \end{split}
+        \label{eq:synthetic forward}
+        \end{equation}
+    \end{subsection}
+    其中 $\forall$ $u \in \mathcal{N}(v) \setminus \mathcal{G}_{m}$ 满足
+
+    \begin{equation}
+        \begin{split}
+            \mathbf{\hat{h}}^{(\ell)}_u = \mathbf{\Tilde{h}}^{(\ell)}_u + \Delta\mathbf{\hat{h}}^{(\ell)}_u,\quad\Delta\mathbf{\hat{h}}^{(\ell)}_u = M_{\ell}\big(\mathbf{\Tilde{h}}^{(\ell)}_u, \xi\big).
+        \end{split}
+    \label{eq:aux def 1}
+    \end{equation}
+
+    这里，$\mathbf{\Tilde{h}}^{(\ell)}_u$表示前一个历时的嵌入，$M_{\ell}(\cdot)$表示$\ell$第三层的辅助模型。$\xi$表示任何其他历史信息作为$M_{\ell}(\cdot)$的额外输入。如公式~\ref{eq:aux def 1}所示，预测的嵌入等同于前一纪元的嵌入加上一个误差项，这个误差项是由辅助模型仅根据历史信息预测的。
+
+    请注意，在Eq~\ref{eq:aux def 1}中，我们的辅助模型是在不同的子图中共享的（$M_{\ell}(\cdot)$不含$m$）。原因有3个方面： \textbf{1).}。从理论上讲，在分割之前，所有的子图都来自同一个全局输入图，因此共享相同的嵌入分布。我们通过在不同的子图/分区中共享我们的辅助模块来编码这种归纳偏见，这使得辅助模块能够捕捉重要的或重复的模式，而不考虑子图的差异。 \textbf{2).}。实际上，由于过度平滑的问题，GNN模型的层次相对较浅~\cite{chen2020measuring}。另一方面，现代图可以轻易地超过数百万个节点。为了处理这样巨大的图，人们必须将其划分为大量的子图，以便将每个子图装入一个GPU。因此，在分布式GNN问题中，我们通常有$M\gg L$，所以一个更有效的内存方式是在不同的子图上共享辅助模型。\textbf{3).}。更重要的是，这种共享策略还可以增加辅助模型的训练样本量，从而提高辅助模型的\emph{generalizability}。如公式~\ref{eq:aux model loss}所示，$M_{\ell}$享有整个输入图$\mathcal{G}$的训练样本量（即$\vert\mathcal{V}(\mathcal{G})\vert$），而针对分区的辅助模型，即 $M_{\ell,m}$ 只能有最多$\big\vert\mathcal{V}\big(\mathcal{N}(\mathcal{G}_{m}) \setminus \mathcal{G}_{m}\big)\big\vert$样本来学习，这是子图$\mathcal{G}_m$的1-\emph{hop}邻居数量。
+
+
+    \begin{subsection}{训练目标}
+        为了有效而廉价地获得辅助模型的监督，我们提出了一种弱监督的误差回归损失来训练辅助模型，它带来的额外计算成本几乎为零。
+        具体来说，对于任何子图外的节点$u \in \mathcal{N}(v) \setminus \mathcal{G}_{m}$，一定存在另一个子图$\mathcal{G}_{n}$，使得$u \in \mathcal{G}_{n}$ （每个节点必须属于某个图的分区）。
+        在子图$\mathcal{G}_{n}$上用$u$替换节点$v$，在Eq.~\ref{eq:synthetic forward}中可以得到$\mathbf{h}_{u}^{(\ell)}$，其中的计算在GNN模型的前向传播中是\emph{不可见的}。
+        用$\mathbf{h}_{u}^{(\ell)}$减去$\mathbf{\Tilde{h}}^{(\ell)}_u$的结果是真实值嵌入误差 $\Delta\mathbf{h}^{(\ell)}_u = \mathbf{h}_{u}^{(\ell)} - \mathbf{\Tilde{h}}^{(\ell)}_u$，而辅助模型 $M_{\ell}(\cdot)$的训练损失可以定义为$\forall$ $\ell=1,2,\cdots,L-1$
+        \begin{equation}
+            \min\;\; \sum\nolimits_{u\in\mathcal{G}} \big\Vert \Delta\mathbf{\hat{h}}^{(\ell)}_u - \Delta\textbf{h}^{(\ell)}_u \big\Vert_{2}^{2}
+        \label{eq:aux model loss}
+        \end{equation}
+        其中最小化是在$M_{\ell}$的参数上。我们的上述目标函数可以通过从$\mathcal{G}$中取样的小批次轻松地扩展到随机训练，这就允许了\emph{可控}的训练样本量，这取决于辅助模型的效率和性能之间的权衡。
+    \end{subsection}
+
+    \textbf{备注.} \textbf{1).}。如公式所示~\ref{eq:aux def 1}，辅助模型借用了跳过连接~\cite{he2016identity}的思想，辅助模型的预测可以解释为一个错误\emph{修正}项，它纠正了前一时代嵌入的呆滞性。\textbf{2).} 我们在Eq.~\ref{eq:synthetic forward}中的表述是相当普遍的，而且是与模型无关的。现有的具有历史嵌入的GNN训练框架~\cite{chen2018stochastic,fey2021gnnautoscale,wan2022pipegcn}可以享受我们的预测嵌入来进一步提升他们的性能。
+
+    \begin{subsection}{通过时态图建模进行在线预测}
+        正如我们的问题表述中所提到的，为了预测嵌入，我们必须共同捕捉不同节点之间的时间演变和空间依赖性。在这项工作中，我们考虑利用递归结构和GNN的组合模块来模拟复杂的模式，并使用在线方式来训练辅助模块。具体来说，预测的嵌入作为一个桥梁，以在线方式交替训练分布式GNN和辅助模块。预测的嵌入减少了呆滞性，使分布式GNN的并行训练成为可能，而分布式GNN的输出为辅助模块提供了监督。
+        MLP是最直接的辅助模型选择，它以\textit{i.i.d}的方式处理嵌入预测，即$\Delta\mathbf{\hat{h}}^{(\ell)}_u = MLP\big(\mathbf{\Tilde{h}}^{(\ell)}_u\big)$。
+由于图数据是非文本{i.i.d}，即不同节点之间存在依赖关系，因此更直观的辅助模型选择是GNN（例如，GCN~\cite{kipf2016semi}），它将输入作为一个图，即：  
+\begin{equation}
+    \Delta\mathbf{\hat{H}}^{(\ell)} = GCN\big(\mathbf{\Tilde{H}}^{(\ell)}, \mathbf{A}\big),
+\label{eq:aux gnn}
+\end{equation} 
+基于MLP和GNN的辅助模型的一个潜在限制是，这两种方法都缺乏捕捉嵌入如何从历时到历时演变的时间信息的能力。为此，我们建议将GNN与一个循环结构（即RNN-GNN~\cite{wu2022graph}）结合起来，以捕捉嵌入如何在时间上（沿着不同的历时）和空间上（不同的节点之间）演变。将$\mathbf{H}^{(\ell,t)}$作为层$\ell$和历时$t$的嵌入矩阵。考虑当前的历时为$t$，那么RNN-GNN辅助模型如下：
+\begin{equation}
+    \begin{split}
+        \mathbf{S}^{(\ell,t)}, \mathbf{C}^{(\ell,t)} &= LSTM\big(\mathbf{H}^{(\ell,t)}, \mathbf{S}^{(\ell,t-1)}, \mathbf{C}^{(\ell,t-1)}  \big), \\
+        &\Delta\mathbf{\hat{H}}^{(\ell,t)} = GCN\big(\mathbf{S}^{(\ell,t)}, \mathbf{A}\big),
+    \end{split}
+\label{eq:aux rnn-gnn}
+\end{equation}
+其中$\mathbf{S}$和$\mathbf{C}$分别表示LSTM单元的隐藏状态和存储单元。注意，LSTM的输入序列长度可以由用户指定，当输入序列长度为1时，基于GNN的辅助模型可以被看作是RNN-GNN的一个特例。
+由于RNN-GNN需要存储以前历时的嵌入，我们建议保存$\Delta\mathbf{H}^{(\ell,t)}=\mathbf{H}^{(\ell,t)}-\mathbf{H}^{(\ell,t-1)}$而不是$\mathbf{H}^{(\ell,t)}$。根据经验，我们发现，由于在训练过程中，两个历时之间的嵌入变化相当小，$\Delta\mathbf{H}^{(\ell,t)}$的显著数字比$\mathbf{H}^{(\ell,t)}$小得多（通常在10到100倍之间）。因此，即使在大图上，存储历史嵌入的内存成本也不会成为瓶颈。我们对内存消耗的实验结果进一步支持了我们的观点，可以在表~\ref{tab:memory consumption}中找到。
+\end{subsection}
+
+
+\begin{subsection}{预训练和自适应微调频率}
+由于潜在的通信和内存成本，每一个epoch都要训练辅助模块是昂贵而低效的。当输入图的大小变大，训练需要更多的历时来收敛时，这种问题会更加严重。为了缓解这个问题，同时进一步提高辅助模块的性能，我们利用预训练和自适应微调率技术来减少辅助模块所需的训练频率。具体来说，我们首先对原始输入图的一个小子图进行采样，对辅助模块进行预训练，与主要训练阶段相比，这只引入了边际计算时间。此外，我们考虑采用阶梯式衰减，将辅助模块的微调频率每隔几个 epochs下降一个系数，即：
+\begin{equation}
+    \eta =  \eta_0 \cdot exp\big( \lfloor t / \Delta t \rfloor\big),
+\end{equation}
+其中$\eta$表示对辅助模块进行一次微调的历时数，$\Delta t$是控制下降率的超参数。$\eta_0$在训练开始时被设置为$1$。
+\end{subsection}
+
+   
+\end{section}
+
